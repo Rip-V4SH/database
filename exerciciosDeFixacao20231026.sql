@@ -15,7 +15,7 @@ delimiter //
 
 create trigger before_delete_cliente before delete on Clientes for each row
 begin
-	insert into Auditoria(mensagem) values('tentaram excluir um cliente!!')
+	insert into Auditoria(mensagem) values('tentaram excluir um cliente!!');
 end //
 
 delimiter ;
@@ -26,7 +26,7 @@ delimiter //
 
 create trigger after_update_cliente after update on Clientes for each row
 begin
-	insert into Auditoria(mensagem) values(concat('mudaram um nome!! de ', old.nome,' para ', new.nome))
+	insert into Auditoria(mensagem) values(concat('mudaram um nome!! de ', old.nome,' para ', new.nome));
 end //
 
 delimiter ;
