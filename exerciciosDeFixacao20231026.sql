@@ -33,3 +33,14 @@ delimiter ;
 
 -- 04)
 
+delimiter //
+
+create trigger warning before update on Clientes for each row
+begin
+	if (new.nome is null or new.nome = '') then
+		insert into Auditoria(mensagem) values('tentativa de adição de nome vazio ou nulo!!');
+        delete new.nome from Clientes; 
+	end if; 
+end //
+
+delimiter ;
